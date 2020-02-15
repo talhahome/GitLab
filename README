@@ -1,0 +1,24 @@
+Install & Configure 
+
+We may follow some simple steps to install and configure a GitLab server on a fresh CentOS 6.x platform; 
+
+yum install curl cronie		[make sure that postfix & openssh-server are installed]
+service postfix start
+chkconfig postfix on
+lokkit -s http -s ssh
+
+	curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+ | sudo bash
+yum -y install gitlab-ce
+
+	gitlab-ctl reconfigure
+
+	Log-in with root user and set password for the first time login. 
+
+	Open the below file; 
+	vi /etc/gitlab/gitlab.rb
+	and edit; 
+	external_url 'http://[YourIP]/'
+
+	gitlab-ctl reconfigure
+
